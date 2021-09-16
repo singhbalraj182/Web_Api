@@ -1,0 +1,113 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="myheading">All History of Simple Interest Calculation</h1>
+</div>
+<!-- Table For Display Simple Interest Calculation-->
+<div id="table_details">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Principal Amount</th>
+                <th>Rate per Year</th>
+                <th>Year</th>
+                <th>Simple Interest</th>
+                <th colspan="2" align="center">Operation</th>
+            </tr>
+        </thead>
+        <tbody id="tbody_simple">
+            <tr>
+                <td colspan="5" align="center">No Simple Intereset Calculation Information</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Add Modal Form -->
+<div class="modal" tabindex="-1" role="dialog" id="addForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title myheading">Simple Interest Calculator</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="principal">Enter Principal Amount: </label>
+                        <input type="number" step="any" class="form-control" id="principal">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Enter Interest Rate Per Year: </label>
+                        <input type="number" step="any" class="form-control" id="rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Enter Period in Year: </label>
+                        <input type="number" class="form-control" id="year">
+                    </div>
+                    <div class="form-group" id="result">
+
+                    </div>
+                    <button type="button" onclick="calculateInterest()" class="btn btn-primary">Calculate Interest</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal Box -->
+<div class="modal" tabindex="-1" role="dialog" id="updateForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Rating Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="principal1">Enter Principal Amount: </label>
+                        <input type="number" step="any" class="form-control" id="principal1">
+                        <input type="hidden" class="form-control" id="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate1">Enter Interest Rate per Year: </label>
+                        <input type="number" step="any" class="form-control" id="rate1">
+                    </div>
+                    <div class="form-group">
+                        <label for="year1">Enter Period in Year: </label>
+                        <input type="number" class="form-control" id="year1">
+                    </div>
+                    <div class="form-group" id="resultUpdate">
+                    </div>
+                    <button type="button" onclick="updateInterest()" class="btn btn-primary">Update Rating Details</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal Dialog Ends -->
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            loadAllInterest();
+        });
+    </script>
+}
